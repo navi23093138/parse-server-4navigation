@@ -1,7 +1,7 @@
 {
-  "name": "Parse Server Example",
-  "description": "An example Parse API server using the parse-server module",
-  "repository": "https://github.com/ParsePlatform/parse-server-example",
+  "name": "Donate to Navigation",
+  "description": "Donate to Navigation",
+  "repository": "https://github.com/navi23093138/parse-server-4navigation.git",
   "logo": "https://avatars0.githubusercontent.com/u/1294580?v=3&s=200",
   "keywords": ["node", "express", "parse"],
   "env": {
@@ -11,15 +11,15 @@
     },
     "APP_ID": {
       "description": "A unique identifier for your app.",
-      "value": "myAppId"
+      "value": "kP6KipEEmdj9w5aZLt6r"
     },
     "MASTER_KEY": {
       "description": "A key that overrides all permissions. Keep this secret.",
-      "value": "myMasterKey"
+      "value": "UesEsR0YBeOrdjZ9jnHB"
     },
     "SERVER_URL": {
       "description": "URL to connect to your Heroku instance (update with your app's name + PARSE_MOUNT)",
-      "value": "http://yourappname.herokuapp.com/parse"
+      "value": "https://donate2navi.herokuapp.com/parse"
     }
   },
   "image": "heroku/nodejs",
