@@ -79,15 +79,14 @@ Parse.Cloud.define("submitDonateForm", function(request, response) {
 
 // 查詢捐款申請
 Parse.Cloud.define("findApplicationByPhone", function(request, response) {
-	var query1  = new Parse.Query("NV_DonationApply");
-	query1.equalTo("cellPhone", request.params.cellPhone);
-	query1.ascending("createdAt");
-	
-	var query2  = new Parse.Query("NV_DonationApply");
-	query2.equalTo("email", request.params.cellPhone);
-	
-	var mainQuery = Parse.Query.or(query1, query2);
-	mainQuery.find({
+	var query  = new Parse.Query("NV_DonationApply");
+	if (request.params.queryType == "phone") {
+		query.equalTo("cellPhone", request.params.cellPhone);
+	} else {
+		query.equalTo("email", request.params.email);	
+	}
+	query.ascending("createdAt");
+	query.find({
 		success: function(results) {
 			response.success(results);
     	},
