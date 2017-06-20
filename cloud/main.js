@@ -30,14 +30,7 @@ Parse.Cloud.define('hello', function(req, res) {
 });
 
 
-//user
-// -user
-// -user
-// insert donate data
-// send mail
-// return 
-
-//
+//
 Parse.Cloud.define("submitDonateForm", function(request, response) {
 	Parse.Cloud.useMasterKey();
 	
@@ -97,7 +90,8 @@ Parse.Cloud.define("findApplicationByPhone", function(request, response) {
 	});
 });
 
-////////////////////////////// trigger ///////////////////
+
+/* ########### trigger ############# */
 
 Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 	
