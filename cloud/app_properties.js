@@ -7,7 +7,7 @@ exports.push_env = function() {
 }
 
 exports.mail_cc = function () {
-	return "navi.23093138@gmail.com";
+	return "領航協會 <navi.23093138@gmail.com>";
 }
 
 exports.admin_mail = function() {
