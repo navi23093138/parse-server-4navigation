@@ -28,12 +28,12 @@ exports.card_transaction_error = function (subject, body) {
 
 
 //send normal message
-exports.send_notify = function (mailTo, mailCc, subject, body) {
+exports.send_notify = function (mailTo, mailCc, mail_subject, body) {
 	if (mailTo == null || mailTo == "") mailTo = prop.admin_mail();
 	
 	//if (mailCc == null || mailCc == "") mailCc = prop.admin_mail();
 	
-	send(mailTo, mailCc, subject, body);
+	send(mailTo, mailCc, mail_subject, body);
 }
 
 //send normal message with order link

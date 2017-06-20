@@ -88,10 +88,10 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		var donateType = request.object.get("donateType");
 		if (donateType == "once") 
 		
-		var subject = "application accepted";
+		var mail_subject = "application accepted";
 		
 		var body = request.object.get("receiptTitle") + " 您好,<BR><BR>";
-		body += "感謝您對領航協會的支持，您的捐款申請單已收到，我們的專員會儘速與您聯絡。<BR>";
+		body += "感謝您對領航協會的支持，您的捐款申請單已收到，我們的專員會儘速與您聯絡。<BR><BR>";
 		body += "以下是您的捐款申請資料 -<BR>";
 		
 		body += "捐款方式: " + ((donateType == "once")? "單次捐款" : "每月定期") + "<BR>";
@@ -111,6 +111,6 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		body += "領航協會聯絡方式:<BR>";
 		body += "電話:02-23093138<BR>";
 		
-		logger.send_notify(request.object.get("email"), prop.mail_cc(), subject, body);	
+		logger.send_notify(request.object.get("email"), prop.mail_cc(), mail_subject, body);	
 	}
 });
