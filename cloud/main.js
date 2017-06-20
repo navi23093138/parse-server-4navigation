@@ -4,15 +4,15 @@ curl -X POST \
   -H "X-Parse-Application-Id: kP6KipEEmdj9w5aZLt6r" \
   -H "Content-Type: application/json" \
   -d '{
-  	"donateType": "once",
-  	"donateMoney": "500",
+  	"donateType": "monthly",
+  	"donateMoney": "1000",
   	"receiptTitle" : "Ha Ha",
-  	"userPhone" : "0918000000",
-  	"email" : "avery.hou@gmail.com",
-  	"cardNo" : "1234567800000000",
+  	"userPhone" : "0919000000",
+  	"email" : "avery@gmail.com",
+  	"cardNo" : "0001122334400000",
   	"cardNoYY" : "04",
   	"cardNoMM" : "20",
-  	"cardNoCVC" : "123",
+  	"cardNoCVC" : "987",
   	"homePhone" : "02-23093138"
   
   }' \
@@ -44,6 +44,7 @@ Parse.Cloud.define("submitDonateForm", function(request, response) {
     var NV_DonationApply = Parse.Object.extend("NV_DonationApply");
 	var donateApply = new NV_DonationApply();
 	donateApply.set("accessToken", Math.uuid(32));
+	donateApply.set("status", "applying");
 	donateApply.set("donateType", request.params.donateType);
 	donateApply.set("donateMoney", request.params.donateMoney);
 	donateApply.set("receiptTitle", request.params.receiptTitle);	
