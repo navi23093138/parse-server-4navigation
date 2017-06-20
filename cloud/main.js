@@ -6,7 +6,7 @@ curl -X POST \
   -d '{
   	"donateType": "monthly",
   	"donateMoney": "1130",
-  	"receiptTitle" : "林小弟",
+  	"receiptTitle" : "陳小春",
   	"receiptAddress" : "新竹縣竹北光明一路100",
   	"email" : "avery.hou@gmail.com",
   	"cardNo" : "0001122334401238",
@@ -88,10 +88,10 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		var donateType = request.object.get("donateType");
 		if (donateType == "once") 
 		
-		var mail_subject = "application accepted";
-		
+		var mail_title = "HHHHHHHHHH";
 		var body = request.object.get("receiptTitle") + " 您好,<BR><BR>";
 		body += "感謝您對領航協會的支持，您的捐款申請單已收到，我們的專員會儘速與您聯絡。<BR><BR>";
+		
 		/*
 		body += "以下是您的捐款申請資料 -<BR>";
 		
@@ -112,6 +112,6 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		body += "領航協會聯絡方式:<BR>";
 		body += "電話:02-23093138<BR>";
 		*/
-		logger.send_notify(request.object.get("email"), prop.mail_cc(), body, body);	
+		logger.send_notify(request.object.get("email"), prop.mail_cc(), mail_title, body);	
 	}
 });
