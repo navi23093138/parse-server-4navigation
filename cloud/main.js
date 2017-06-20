@@ -6,7 +6,7 @@ curl -X POST \
   -d '{
   	"donateType": "monthly",
   	"donateMoney": "1130",
-  	"receiptTitle" : "陳小春",
+  	"receiptTitle" : "Avery先生",
   	"receiptAddress" : "新竹縣竹北光明一路100",
   	"email" : "avery.hou@gmail.com",
   	"cardNo" : "0001122334401238",

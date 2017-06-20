@@ -28,12 +28,12 @@ exports.card_transaction_error = function (subject, body) {
 
 
 //send normal message
-exports.send_notify = function (mailTo, mailCc, mail_subject, body) {
-	if (mailTo == null || mailTo == "") mailTo = prop.admin_mail();
+exports.send_notify = function (mailTo, mailCc, mail_sub, body) {
+	if (mailTo == null || mailTo == "") {
+		mailTo = prop.admin_mail();
+	}
 	
-	//if (mailCc == null || mailCc == "") mailCc = prop.admin_mail();
-	
-	send(mailTo, mailCc, mail_subject, body);
+	send(mailTo, mailCc, mail_sub, body);
 }
 
 //send normal message with order link
@@ -50,13 +50,13 @@ exports.send_info = function (mailTo, mailCc, subject, body, orderId) {
 //Mailgun.initialize(prop.mailgun_domain(), prop.mailgun_key());
 var mailGunService = require('mailgun-js')({apiKey: prop.mailgun_key(), domain: prop.mailgun_domain()});
 
-function send(mailto, mailCc, mail_subject, body) {
+function send(mailto, mailCc, mail_sub, body) {
 	
 	if (mailCc == null || mailCc == "") {
 		var data = {
 			  from: prop.admin_mail(),
 			  to: mailto,
-			  subject: "***" + mail_subject,
+			  subject: "***" + mail_sub,
 			  html: body
 			};
 			
@@ -74,7 +74,7 @@ function send(mailto, mailCc, mail_subject, body) {
 			  from: prop.admin_mail(),
 			  to: mailto,
 			  cc: mailCc,
-			  subject: "***" + mail_subject,
+			  subject: "***" + mail_sub,
 			  html: body
 			};
 			
