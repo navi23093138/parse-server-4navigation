@@ -23,7 +23,7 @@ curl -X POST \
 
 require("./Math.uuid.js");
 var logger = require("./mail_service.js");
-var prop = require("./app_properties.js");
+//var prop = require("./app_properties.js");
 
 Parse.Cloud.define('hello', function(req, res) {
 	res.success(Math.uuid(20));
