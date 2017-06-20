@@ -60,9 +60,6 @@ Parse.Cloud.define("submitDonateForm", function(request, response) {
 		success: function(donateApplyCreated){
 			response.success(donateApplyCreated.id);
 			
-			//send mail to 
-			
-			
 		},
 		error: function(err) {
 			response.error("submitDonateForm failed." + err);
@@ -92,7 +89,7 @@ Parse.Cloud.define("findApplicationByPhone", function(request, response) {
 
 
 /* ########### trigger ############# */
-
+/*
 Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 	
 	if (request.object.get("email") != null) {
@@ -128,11 +125,8 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		applicationInfo += "http://donate.navi.love/application.html?accessToken=" + request.object.id + request.object.get("accessToken");
 		
 		logger.send_notify(prop.admin_mail(), "", "有一筆新的捐款單，捐款人:" + request.object.get("receiptTitle") , applicationInfo);
-		
-		
-		
 		return true;
 	}
 });
-
+*/
 
