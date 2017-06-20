@@ -11,7 +11,7 @@ exports.mail_cc = function () {
 }
 
 exports.admin_mail = function() {
-	return "<領航協會>navi.23093138@gmail.com";
+	return "領航協會 <navi.23093138@gmail.com>";
 }
 
 exports.error_admin = function() {
