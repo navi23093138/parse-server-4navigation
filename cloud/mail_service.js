@@ -56,7 +56,7 @@ function send(mailto, mailCc, subj, body) {
 		var data = {
 			  from: prop.admin_mail(),
 			  to: mailto,
-			  subject: subj,
+			  subject: prop.env() + subj,
 			  html: body
 			};
 			
@@ -74,7 +74,7 @@ function send(mailto, mailCc, subj, body) {
 			  from: prop.admin_mail(),
 			  to: mailto,
 			  cc: mailCc,
-			  subject: subj,
+			  subject: prop.env() + subj,
 			  html: body
 			};
 			
