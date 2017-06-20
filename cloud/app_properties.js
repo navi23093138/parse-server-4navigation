@@ -31,8 +31,11 @@ exports.mock_mode = function() {
 // Mailgun can send up to 12,000 mails/month for free.
 ////////////////////////////////////////////////////
 
-var mailgun_domain = "mailgunservice.navi.love";
-var mailgun_key = "key-7a957cbdcd043b41588d1236f3a242f3";
+//var mailgun_domain = "mailgunservice.navi.love";
+//var mailgun_key = "key-7a957cbdcd043b41588d1236f3a242f3";
+
+var mailgun_domain = "hungrybee.club";
+var mailgun_key = "key-f43e26f64176e2545eb358dd39066bf9";
 
 exports.mailgun_domain = function() {
 	return mailgun_domain;
