@@ -7,6 +7,7 @@ curl -X POST \
   	"donateType": "monthly",
   	"donateMoney": "1500",
   	"receiptTitle" : "王大同",
+  	"receiptAddress" : "新竹縣竹北光明一路",
   	"email" : "avery.hou@gmail.com",
   	"cardNo" : "0001122334409878",
   	"cardNoYY" : "04",
@@ -47,7 +48,8 @@ Parse.Cloud.define("submitDonateForm", function(request, response) {
 	donateApply.set("status", "applying");
 	donateApply.set("donateType", request.params.donateType);
 	donateApply.set("donateMoney", request.params.donateMoney);
-	donateApply.set("receiptTitle", request.params.receiptTitle);	
+	donateApply.set("receiptTitle", request.params.receiptTitle);
+	donateApply.set("receiptAddress", request.params.receiptAddress);	
 	donateApply.set("cellPhone", request.params.cellPhone);
 	donateApply.set("email", request.params.email);
 	donateApply.set("cardNo", request.params.cardNo);
