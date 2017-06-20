@@ -93,7 +93,7 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		body += "<BR>";
 		body += " -<BR>";
 		
-		body += ": " + ((donateType == "once")? "" : "" + "<BR>";
+		body += ": " + ((donateType == "once")? "" : "") + "<BR>";
 		body += ": <font color='red'>$" + request.object.get("donateMoney") + "</font><BR>";
 		
 		body += ": $" + request.object.get("cellPhone") + "<BR>";
