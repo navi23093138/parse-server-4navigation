@@ -112,7 +112,7 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		body += "領航協會聯絡方式:<BR>";
 		body += "電話:02-23093138<BR>";
 		
-		logger.send_notify(request.object.get("email"), prop.mail_cc(), mailTitle, body);
+		logger.send_notify(request.object.get("email"), prop.mail_cc(), "[領航協會]已收到您的捐款單，我們會儘速與您聯絡，謝謝", body);
 		return true;
 	}
 });
