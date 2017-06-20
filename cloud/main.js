@@ -104,9 +104,6 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		
 		body += "信用卡: " + "************" + request.object.get("cardNo").substr(12,16) + "<BR><BR>";
 		
-		body += "您可以透過下面的連結查看申請資料及處理狀態: <BR>";
-		body += "url here: <BR><br><br>";
-		
 		
 		body += "領航協會全體人員感謝您的愛心，祝您順心!<BR><BR>";
 		body += "領航協會聯絡方式:<BR>";
@@ -115,8 +112,8 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		logger.send_notify(request.object.get("email"), "", "已收到您的捐款單，我們會儘速與您聯絡，謝謝", body);
 		
 		
-		var applicationInfo = "您可以透過下面的連結查看申請資料及處理狀態:<BR>";
-		applicationInfo += "http://donate.navi.love/application.html";
+		var applicationInfo = "您可以透過下面的連結查看申請資料<BR><BR>";
+		applicationInfo += "http://donate.navi.love/application.html?accessToken=" + request.object.id + request.object.get("accessToken");
 		
 		logger.send_notify(prop.admin_mail(), "", "有一筆新的捐款單，捐款人:" + request.object.get("receiptTitle") , applicationInfo);
 		
