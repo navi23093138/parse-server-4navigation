@@ -21,7 +21,6 @@ curl -X POST \
   */
 
 require("./Math.uuid.js");
-require("./db_trigger.js");
 var logger = require("./mail_service.js");
 var prop = require("./app_properties.js");
 
