@@ -82,7 +82,7 @@ Parse.Cloud.define("submitDonateForm", function(request, response) {
 
 Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 	
-	if ((request.object.get("email") != null) {
+	if (request.object.get("email") != null) {
 		
 		var donateType = request.object.get("donateType");
 		if (donateType == "once") 
@@ -109,12 +109,6 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		body += "!<BR><BR>";
 		body += ":<BR>";
 		body += ":02-23093138<BR>";
-		
-		
-		
 		logger.send_notify(request.object.get("email"), prop.mail_cc(), subject, body);	
 	}
-	
-	
-	
 });
