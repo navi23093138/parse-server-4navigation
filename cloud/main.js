@@ -5,14 +5,14 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
   	"donateType": "monthly",
-  	"donateMoney": "1000",
-  	"receiptTitle" : "Ha Ha",
-  	"userPhone" : "0919000000",
-  	"email" : "avery@gmail.com",
-  	"cardNo" : "0001122334400000",
+  	"donateMoney": "1500",
+  	"receiptTitle" : "王大同",
+  	"email" : "avery.hou@gmail.com",
+  	"cardNo" : "0001122334409878",
   	"cardNoYY" : "04",
   	"cardNoMM" : "20",
   	"cardNoCVC" : "987",
+  	"cellPhone" : "0919000000",
   	"homePhone" : "02-23093138"
   
   }' \
@@ -48,7 +48,7 @@ Parse.Cloud.define("submitDonateForm", function(request, response) {
 	donateApply.set("donateType", request.params.donateType);
 	donateApply.set("donateMoney", request.params.donateMoney);
 	donateApply.set("receiptTitle", request.params.receiptTitle);	
-	donateApply.set("userPhone", request.params.cellPhone);
+	donateApply.set("cellPhone", request.params.cellPhone);
 	donateApply.set("email", request.params.email);
 	donateApply.set("cardNo", request.params.cardNo);
 	donateApply.set("cardNoYY", request.params.cardNoYY);
@@ -95,11 +95,11 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		body += "捐款方式: " + ((donateType == "once")? "單次捐款" : "每月定期") + "<BR>";
 		body += "捐款金額: <font color='red'>$" + request.object.get("donateMoney") + "</font><BR>";
 		
-		body += "手機: " + request.object.get("userPhone") + "<BR>";
+		body += "手機: " + request.object.get("cellPhone") + "<BR>";
 		body += "市話: " + request.object.get("homePhone") + "<BR>";
 		body += "收據寄送地址: " + request.object.get("receiptAddress") + "<BR>";
 		
-		body += "信用卡: " + "************" + request.object.get("cardNo").substr(13,16) + "<BR><BR>";
+		body += "信用卡: " + "************" + request.object.get("cardNo").substr(12,16) + "<BR><BR>";
 		
 		body += "您可以透過下面的連結查看申請資料及處理狀態: <BR>";
 		body += "url here: <BR><br><br>";

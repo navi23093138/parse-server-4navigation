@@ -1,6 +1,6 @@
 
 exports.env = function() {
-	return "[領航協會]";	
+	return "領航協會";	
 }
 exports.push_env = function() {
 	return "";	
@@ -11,7 +11,7 @@ exports.mail_cc = function () {
 }
 
 exports.admin_mail = function() {
-	return "avery.hou@wintopinfo.com";
+	return "navi.23093138@gmail.com";
 }
 
 exports.error_admin = function() {
