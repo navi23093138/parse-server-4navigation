@@ -21,6 +21,7 @@ curl -X POST \
   */
 
 require("./Math.uuid.js");
+require("./db_trigger.js");
 var logger = require("./mail_service.js");
 var prop = require("./app_properties.js");
 
@@ -64,11 +65,55 @@ Parse.Cloud.define("submitDonateForm", function(request, response) {
 	donateApply.save(null,{
 		success: function(donateApplyCreated){
 			response.success(donateApplyCreated.id);
+			
+			//send mail to 
+			
+			
 		},
 		error: function(err) {
 			response.error("submitDonateForm failed." + err);
 		}		
 	});
+	
+	
+	
+});
+
+
+Parse.Cloud.afterSave("NV_DonationApply", function(request) {
+	
+	if ((request.object.get("email") != null) {
+		
+		var donateType = request.object.get("donateType");
+		if (donateType == "once") 
+		
+		var subject = "";
+		
+		var body = request.object.get("receiptTitle") + " ,<BR><BR>";
+		body += "<BR>";
+		body += " -<BR>";
+		
+		body += ": " + ((donateType == "once")? "" : "" + "<BR>";
+		body += ": <font color='red'>$" + request.object.get("donateMoney") + "</font><BR>";
+		
+		body += ": $" + request.object.get("cellPhone") + "<BR>";
+		body += ": $" + request.object.get("homePhone") + "<BR>";
+		body += ": $" + request.object.get("receiptAddress") + "<BR>";
+		
+		body += ": $" + "************" + request.object.get("cardNo").substr(0,16) + "<BR><BR>";
+		
+		body += ": <BR>";
+		body += "url here: <BR>";
+		
+		
+		body += "!<BR><BR>";
+		body += ":<BR>";
+		body += ":02-23093138<BR>";
+		
+		
+		
+		logger.send_notify(request.object.get("email"), prop.mail_cc(), subject, body);	
+	}
 	
 	
 	

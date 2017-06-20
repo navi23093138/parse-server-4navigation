@@ -1,6 +1,6 @@
 
 exports.env = function() {
-	return "Navi";	
+	return "[]";	
 }
 exports.push_env = function() {
 	return "";	
