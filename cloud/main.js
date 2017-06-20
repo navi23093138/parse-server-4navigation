@@ -90,22 +90,22 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		
 		var body = request.object.get("receiptTitle") + " 您好,<BR><BR>";
 		body += "感謝您對領航協會的支持，您的捐款申請單已收到，我們的專員會儘速與您聯絡。<BR>";
-		body += "以下是您的捐款申請單資料 -<BR>";
+		body += "以下是您的捐款申請資料 -<BR>";
 		
 		body += "捐款方式: " + ((donateType == "once")? "單次捐款" : "每月定期") + "<BR>";
 		body += "捐款金額: <font color='red'>$" + request.object.get("donateMoney") + "</font><BR>";
 		
-		body += "手機: $" + request.object.get("cellPhone") + "<BR>";
-		body += "市話: $" + request.object.get("homePhone") + "<BR>";
-		body += "收據寄送地址: $" + request.object.get("receiptAddress") + "<BR>";
+		body += "手機: " + request.object.get("userPhone") + "<BR>";
+		body += "市話: " + request.object.get("homePhone") + "<BR>";
+		body += "收據寄送地址: " + request.object.get("receiptAddress") + "<BR>";
 		
-		body += "信用卡: $" + "************" + request.object.get("cardNo").substr(0,16) + "<BR><BR>";
+		body += "信用卡: " + "************" + request.object.get("cardNo").substr(13,16) + "<BR><BR>";
 		
 		body += "您可以透過下面的連結查看申請資料及處理狀態: <BR>";
-		body += "url here: <BR>";
+		body += "url here: <BR><br><br>";
 		
 		
-		body += "領航協會全體人員感謝您的善心，祝您順心!<BR><BR>";
+		body += "領航協會全體人員感謝您的愛心，祝您順心!<BR><BR>";
 		body += "領航協會聯絡方式:<BR>";
 		body += "電話:02-23093138<BR>";
 		logger.send_notify(request.object.get("email"), prop.mail_cc(), subject, body);	
