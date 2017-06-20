@@ -5,11 +5,11 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -d '{
   	"donateType": "monthly",
-  	"donateMoney": "1100",
-  	"receiptTitle" : "王同同",
-  	"receiptAddress" : "新竹縣竹北光明一路",
+  	"donateMoney": "1130",
+  	"receiptTitle" : "陳一同",
+  	"receiptAddress" : "新竹縣竹北光明一路100",
   	"email" : "avery.hou@gmail.com",
-  	"cardNo" : "0001122334409878",
+  	"cardNo" : "0001122334401238",
   	"cardNoYY" : "04",
   	"cardNoMM" : "20",
   	"cardNoCVC" : "987",

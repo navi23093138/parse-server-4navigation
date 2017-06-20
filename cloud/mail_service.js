@@ -50,13 +50,13 @@ exports.send_info = function (mailTo, mailCc, subject, body, orderId) {
 //Mailgun.initialize(prop.mailgun_domain(), prop.mailgun_key());
 var mailGunService = require('mailgun-js')({apiKey: prop.mailgun_key(), domain: prop.mailgun_domain()});
 
-function send(mailto, mailCc, subject, body) {
+function send(mailto, mailCc, mail_subject, body) {
 	
 	if (mailCc == null || mailCc == "") {
 		var data = {
 			  from: prop.admin_mail(),
 			  to: mailto,
-			  subject: prop.env() + subject,
+			  subject: "***" + prop.env() + mail_subject,
 			  html: body
 			};
 			
@@ -74,7 +74,7 @@ function send(mailto, mailCc, subject, body) {
 			  from: prop.admin_mail(),
 			  to: mailto,
 			  cc: mailCc,
-			  subject: prop.env() + subject,
+			  subject: prop.env() + mail_subject,
 			  html: body
 			};
 			
