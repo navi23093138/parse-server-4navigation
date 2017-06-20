@@ -74,7 +74,7 @@ function send(mailto, mailCc, mail_subject, body) {
 			  from: prop.admin_mail(),
 			  to: mailto,
 			  cc: mailCc,
-			  subject: prop.env() + mail_subject,
+			  subject: "***" + prop.env() + mail_subject,
 			  html: body
 			};
 			
