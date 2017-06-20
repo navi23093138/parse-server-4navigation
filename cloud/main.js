@@ -89,7 +89,7 @@ Parse.Cloud.define("findApplicationByPhone", function(request, response) {
 
 
 /* ########### trigger ############# */
-/*
+
 Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 	
 	if (request.object.get("email") != null) {
@@ -128,5 +128,5 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 		return true;
 	}
 });
-*/
+
 
