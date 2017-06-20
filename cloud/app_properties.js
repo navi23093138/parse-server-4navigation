@@ -1,6 +1,6 @@
 
 exports.env = function() {
-	return "領航協會--";	
+	return "Navi";	
 }
 exports.push_env = function() {
 	return "";	

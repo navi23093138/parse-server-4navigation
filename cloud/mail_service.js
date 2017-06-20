@@ -28,35 +28,35 @@ exports.card_transaction_error = function (subject, body) {
 
 
 //send normal message
-exports.send_notify = function (mailTo, mailCc, mail_sub, body) {
+exports.send_notify = function (mailTo, mailCc, subj, body) {
 	if (mailTo == null || mailTo == "") {
 		mailTo = prop.admin_mail();
 	}
 	
-	send(mailTo, mailCc, mail_sub, body);
+	send(mailTo, mailCc, subj, body);
 }
 
 //send normal message with order link
-exports.send_info = function (mailTo, mailCc, subject, body, orderId) {
+exports.send_info = function (mailTo, mailCc, subj, body, orderId) {
 	var orderInfo = prop.order_info() + "?objectId=" + orderId;
 	if (mailTo == null || mailTo == "") mailTo = prop.admin_mail();
 	
 	body = body + "<BR><BR>可按此查看訂單資訊:<BR>" + orderInfo;
 	
-	send(mailTo, mailCc, subject, body);
+	send(mailTo, mailCc, subj, body);
 }
 
 //var Mailgun = require('mailgun');
 //Mailgun.initialize(prop.mailgun_domain(), prop.mailgun_key());
 var mailGunService = require('mailgun-js')({apiKey: prop.mailgun_key(), domain: prop.mailgun_domain()});
 
-function send(mailto, mailCc, mail_sub, body) {
+function send(mailto, mailCc, subj, body) {
 	
 	if (mailCc == null || mailCc == "") {
 		var data = {
 			  from: prop.admin_mail(),
 			  to: mailto,
-			  subject: "***" + mail_sub,
+			  subject: "[subj]" + subj,
 			  html: body
 			};
 			
@@ -74,7 +74,7 @@ function send(mailto, mailCc, mail_sub, body) {
 			  from: prop.admin_mail(),
 			  to: mailto,
 			  cc: mailCc,
-			  subject: "***" + mail_sub,
+			  subject: "[subj]" + subj,
 			  html: body
 			};
 			
