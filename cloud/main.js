@@ -19,6 +19,16 @@ curl -X POST \
   }' \
   https://donate2navi.herokuapp.com/parse/functions/submitDonateForm
   
+  
+  curl -X POST \
+  -H "X-Parse-Application-Id: kP6KipEEmdj9w5aZLt6r" \
+  -H "Content-Type: application/json" \
+  -d '{
+  	"applyId": "DzekmDgcT8",
+  	"status": "contacted"
+  }' \
+  https://donate2navi.herokuapp.com/parse/functions/updateDonateStatus
+  
   */
 
 require("./Math.uuid.js");
@@ -179,4 +189,29 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 	}
 });
 
+
+
+Parse.Cloud.define("updateDonateStatus", function(request, response) {
+	Parse.Cloud.useMasterKey();
+	
+	var query = new Parse.Query("NV_DonationApply");
+    query.get(request.params.applyId, {
+	  	success: function(applyFound) {
+	  		applyFound.set("status", request.params.status);
+	  		applyFound.save(null,{
+				success: function(applySaved){
+					response.success(true);
+			    },
+				error: function(err) {
+					logger.send_error(logger.subject("updateDonateStatus", "save NV_DonationApply"), err); 
+					response.error(err);
+				}		
+			});
+	 	},
+	  	error: function(object, err) {
+			logger.send_error(logger.subject("updateDonateStatus", "query NV_DonationApply error."), err);
+			response.error(err);
+	  	}
+	});
+});
 
