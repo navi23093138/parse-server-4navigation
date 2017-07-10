@@ -136,7 +136,7 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 			//applicationInfo += "http://donate.navi.love/application.html?accessToken=" + request.object.id + request.object.get("accessToken");
 			applicationInfo += "http://donate.navi.love/application.html";
 			
-			logger.send_notify(prop.admin_mail(), "", "有一筆新的捐款單，捐款人:" + request.object.get("receiptTitle") + "(" + request.object.get("cellPhone") + ")" , applicationInfo);
+			logger.send_notify(prop.admin_mail(), "", "有一筆新的捐款單，捐款人:" + request.object.get("receiptTitle") + "(" + request.object.get("cellPhone") + ")" , "");
 			return true;
 			
 		} else if( request.object.get("status") == "contacted") {
