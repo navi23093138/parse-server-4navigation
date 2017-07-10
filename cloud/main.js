@@ -63,9 +63,9 @@ Parse.Cloud.define("submitDonateForm", function(request, response) {
 		donateApply.set("homePhone", request.params.homePhone);
 	}
 	
-	var acl = new Parse.ACL();
-	acl.setPublicReadAccess(true);
-	donateApply.setACL(acl);
+	//var acl = new Parse.ACL();
+	//acl.setPublicReadAccess(true);
+	//donateApply.setACL(acl);
 	donateApply.save(null,{
 		success: function(donateApplyCreated){
 			response.success(donateApplyCreated.id);
@@ -101,7 +101,7 @@ Parse.Cloud.define("findApplicationByPhone", function(request, response) {
 /* ########### trigger ############# */
 
 Parse.Cloud.afterSave("NV_DonationApply", function(request) {
-	
+	/*
 	if (request.object.get("email") != null) {
 		if( request.object.get("status") == "applying") {
 		
@@ -187,6 +187,7 @@ Parse.Cloud.afterSave("NV_DonationApply", function(request) {
 				
 		}
 	}
+	*/
 });
 
 
