@@ -216,3 +216,24 @@ Parse.Cloud.define("updateDonateStatus", function(request, response) {
 	});
 });
 
+Parse.Cloud.define("notifyAdmin", function(request, response) {
+	
+	var query = new Parse.Query("NV_DonationApply");
+    query.get(request.params.applyId, {
+	  	success: function(applyFound) {
+	  		var applicationInfo = "您可以透過下面的連結查看申請資料處理狀態 :<BR><BR>";
+			applicationInfo += "http://donate.navi.love/application.html";
+			
+			logger.send_notify(prop.admin_mail(), "", "有一筆新的捐款單，捐款人:" + applyFound.get("receiptTitle") + "(" + applyFound.get("cellPhone") + ")" , applicationInfo);
+	
+	 	},
+	  	error: function(object, err) {
+			logger.send_error(logger.subject("notifyAdmin", "query NV_DonationApply error."), err);
+			response.error(err);
+	  	}
+	});
+	
+	
+});
+
+			
