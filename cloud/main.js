@@ -29,6 +29,8 @@ curl -X POST \
   }' \
   https://donate2navi.herokuapp.com/parse/functions/updateDonateStatus
   
+  
+  
   */
 
 require("./Math.uuid.js");
@@ -216,6 +218,16 @@ Parse.Cloud.define("updateDonateStatus", function(request, response) {
 	});
 });
 
+
+/* 手動執行範例
+curl -X POST \
+  -H "X-Parse-Application-Id: kP6KipEEmdj9w5aZLt6r" \
+  -H "Content-Type: application/json" \
+  -d '{
+  	"applyId": "DV5okKQOlq"
+  }' \
+  https://donate2navi.herokuapp.com/parse/functions/notifyAdmin
+*/
 Parse.Cloud.define("notifyAdmin", function(request, response) {
 	
 	var query = new Parse.Query("NV_DonationApply");
@@ -225,7 +237,7 @@ Parse.Cloud.define("notifyAdmin", function(request, response) {
 			applicationInfo += "http://donate.navi.love/application.html";
 			
 			logger.send_notify(prop.admin_mail(), "", "有一筆新的捐款單，捐款人:" + applyFound.get("receiptTitle") + "(" + applyFound.get("cellPhone") + ")" , applicationInfo);
-	
+			response.success(true);
 	 	},
 	  	error: function(object, err) {
 			logger.send_error(logger.subject("notifyAdmin", "query NV_DonationApply error."), err);
