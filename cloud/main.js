@@ -80,12 +80,12 @@ Parse.Cloud.define("submitDonateForm", function(request, response) {
 });
 
 // 查詢捐款申請
-Parse.Cloud.define("findApplicationByPhone", function(request, response) {
+Parse.Cloud.define("findApplication", function(request, response) {
 	var query  = new Parse.Query("NV_DonationApply");
 	if (request.params.queryType == "phone") {
 		query.equalTo("cellPhone", request.params.cellPhone);
-	} else {
-		query.equalTo("email", request.params.email);	
+	} else if (request.params.queryType == "status") {
+		query.equalTo("status", request.params.applicationStatus);	
 	}
 	query.ascending("createdAt");
 	query.find({
@@ -224,7 +224,7 @@ curl -X POST \
   -H "X-Parse-Application-Id: kP6KipEEmdj9w5aZLt6r" \
   -H "Content-Type: application/json" \
   -d '{
-  	"applyId": "DV5okKQOlq"
+  	"applyId": "lnpWuzrxdg"
   }' \
   https://donate2navi.herokuapp.com/parse/functions/notifyAdmin
 */
