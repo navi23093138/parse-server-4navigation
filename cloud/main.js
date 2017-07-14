@@ -87,7 +87,7 @@ Parse.Cloud.define("findApplication", function(request, response) {
 	} else if (request.params.queryType == "status") {
 		query.equalTo("status", request.params.applicationStatus);	
 	}
-	query.ascending("createdAt");
+	query.descending("createdAt");
 	query.find({
 		success: function(results) {
 			response.success(results);
